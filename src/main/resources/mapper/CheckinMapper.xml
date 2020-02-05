@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <mapper namespace="com.newer.mapper.CheckinsMapper">
+<resultMap type="Checkins" id="selectCheckins1">
+  <id column="roomid" property="roomid"/>
+  <result column="name" property="name"/>
+  <result column="checkinTime" property="checkinTime"/>
+  <result column="num" property="num"/>
+  <association property="rooms" javaType="Rooms">
+    <id column="roomid1" property="roomid"/>
+    <result column="price" property="price"/>
+  </association>
+
+</resultMap>
+
+<select id="selectCheckins" resultMap="selectCheckins1">select*from checkins c left join rooms r on c.roomid=r.roomid and cstate='wei' </select>
+
+        </mapper>
